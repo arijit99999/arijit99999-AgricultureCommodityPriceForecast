@@ -6,8 +6,7 @@ import sys
 import matplotlib.pyplot as pl
 from src.AgricultureCommodityPriceForecast.logger import logging
 from src.AgricultureCommodityPriceForecast.exception import customexception
-from prophet import Prophet
-import pickle   
+from prophet import Prophet  
 class ModelTrainer:
     def __init__(self):
         self.file_path = os.path.join('artifacts','model.pkl')
