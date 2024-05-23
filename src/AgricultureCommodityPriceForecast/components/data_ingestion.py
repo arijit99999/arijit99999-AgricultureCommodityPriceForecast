@@ -20,6 +20,7 @@ class data_ingestion:
            data=pd.read_csv(r"C:\Users\deyar\OneDrive\Desktop\AgricultureCommodityForecast\notebooks\data\agricultuer.csv") 
            os.makedirs(os.path.dirname(os.path.join(self.ingestion_config.raw_data)),exist_ok=True) 
            data.to_csv(self.ingestion_config.raw_data,index=False) 
+           return self.ingestion_config.raw_data
            logging.info('row data saved ') 
         except Exception as e:
            logging.info("exception during occured at data ingestion stage")
