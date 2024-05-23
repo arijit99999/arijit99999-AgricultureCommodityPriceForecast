@@ -1,0 +1,5 @@
+setup.py
+AgricultureCommodityPricePrediction.egg-info/PKG-INFO
+AgricultureCommodityPricePrediction.egg-info/SOURCES.txt
+AgricultureCommodityPricePrediction.egg-info/dependency_links.txt
+AgricultureCommodityPricePrediction.egg-info/top_level.txt
