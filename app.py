@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template,jsonify
+from flask import Flask, request, render_template
 import pandas as pd
 from prophet import Prophet
 import io
@@ -32,9 +32,9 @@ def forecast():
              pl.title(f'Forecast with Prophet of {x}')
              pl.xlabel('Date')
              pl.ylabel('Value')
-             pl.show()
+     
              fig2 = model.plot_components(forecast)
-             pl.show()
+           
              img1= io.BytesIO()
              fig1.savefig(img1, format='png')
              img1.seek(0)
@@ -44,7 +44,7 @@ def forecast():
              img2.seek(0)
              plot_url2= base64.b64encode(img2.getvalue()).decode()
              forecast_html= forecast[['ds', 'yhat', 'yhat_lower', 'yhat_upper']].head(30).to_html(index=False)
-             return render_template('result.html',forecast_html=forecast_html,plot_url1=plot_url1,plot_url2=plot_url2)
+             return render_template('result.html',forecast_html=forecast_html,plot_url1=plot_url1,plot_url2=plot_url2,x=x)
              
 if __name__ == '__main__':
     app.run(debug=True)
