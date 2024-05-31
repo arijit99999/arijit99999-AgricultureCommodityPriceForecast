@@ -7,9 +7,10 @@ import matplotlib.pyplot as pl
 from src.AgricultureCommodityPriceForecast.logger import logging
 from src.AgricultureCommodityPriceForecast.exception import customexception
 from prophet import Prophet  
+from src.AgricultureCommodityPriceForecast.utlis.utils import save_object
 class ModelTrainer:
     def __init__(self):
-        self.file_path = os.path.join('artifacts','model.pkl')
+        self.file_path =os.path.join('artifacts','model.pkl')
     def initate_model_training(self,model_data):
         try:
             data=pd.read_csv(model_data)
@@ -18,6 +19,7 @@ class ModelTrainer:
             data=data[data['commodity']==x]
             data.drop('commodity',axis=1,inplace=True)
             model=Prophet()
+            save_object(file_path=self.file_path,obj=model)
             logging.info('model saved')
             model.fit(data)
             logging.info('training has been  done')

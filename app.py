@@ -1,9 +1,11 @@
 from flask import Flask, request, render_template
 import pandas as pd
 from prophet import Prophet
+import os
 import io
 import base64
 import matplotlib.pyplot as pl
+from src.AgricultureCommodityPriceForecast.utlis.utils import load_object
 
 app = Flask(__name__,template_folder='template')
 
@@ -26,7 +28,7 @@ def forecast():
              df.drop('commodity',axis=1,inplace=True)
              model = Prophet()
              model.fit(df)
-             future = model.make_future_dataframe(periods=300,freq='D')##we have used day wise
+             future = model.make_future_dataframe(periods=365,freq='D')##we have used day wise
              forecast = model.predict(future)
              fig1 = model.plot(forecast)
              pl.title(f'Forecast with Prophet of {x}')
@@ -44,8 +46,9 @@ def forecast():
              img2.seek(0)
              plot_url2= base64.b64encode(img2.getvalue()).decode()
              forecast_html= forecast[['ds', 'yhat', 'yhat_lower', 'yhat_upper']].head(30).to_html(index=False)
-             return render_template('result.html',forecast_html=forecast_html,plot_url1=plot_url1,plot_url2=plot_url2,x=x)
+             forecast_html2= forecast[['ds', 'yhat', 'yhat_lower', 'yhat_upper']].tail(30).to_html(index=False)
+             return render_template('result.html',forecast_html2=forecast_html2,forecast_html=forecast_html,plot_url1=plot_url1,plot_url2=plot_url2,x=x)
              
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
 

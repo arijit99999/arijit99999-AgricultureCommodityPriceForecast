@@ -1,9 +1,0 @@
-39--ERROR--2024-05-24 00:02:20,864--Importing plotly failed. Interactive plots will not work.
-17--INFO--2024-05-24 00:02:21,860--data ingestion started
-18--INFO--2024-05-24 00:02:22,142--trasnformation initiated
-23--INFO--2024-05-24 00:02:22,406--this is our model data
-27--INFO--2024-05-24 00:02:22,469--read model data
-37--DEBUG--2024-05-24 00:02:49,551--cmd: where.exe tbb.dll
-cwd: None
-245--DEBUG--2024-05-24 00:02:49,614--Adding TBB (C:\Users\deyar\OneDrive\Desktop\AgricultureCommodityForecast\time_env\Lib\site-packages\prophet\stan_model\cmdstan-2.33.1\stan\lib\stan_math\lib\tbb) to PATH
-49--INFO--2024-05-24 00:02:49,615--Exception occured at Model Training
